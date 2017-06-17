@@ -1,0 +1,15 @@
+<% comments.each do |comment| %>
+  <!--
+  <p>
+    <strong>comment:</strong>
+    <%#= @comment.comment.title%>
+  </p>
+   -->
+
+  <p>
+    <%= comment.body %>
+  </p>
+  <hr />
+  <% if current_user.id == comment.user_id %>
+  <% end %>
+<% end %>
