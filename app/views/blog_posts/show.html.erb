@@ -1,0 +1,19 @@
+<%#= render :partial => post %>
+<%= render 'show_blog_post', blog_post: @blog_post %>
+<%= render 'comments/show', comments: @blog_post.comments.order(updated_at: :desc), blog_post: @blog_post %>
+<%= form_for [@blog_post, Comment.new] do |f| %>
+  <div class="field">
+    <%= f.text_area :body, placeholder: 'Leave a comment' %>
+    <button type="button" class="btn btn-primary add-new-comment">
+  </div>
+  <div class="field">
+    <%= f.hidden_field :blog_post_id %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :user_id %>
+  </div>
+
+  <button type="button" class="btn btn-primary"><%= f.submit "Add Comment"%></button>
+<% end %>
+<%= link_to 'Back', blog_posts_path %>

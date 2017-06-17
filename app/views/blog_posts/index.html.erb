@@ -1,9 +1,10 @@
+<%= link_to 'New Blog', new_blog_post_path %>
 <div class="wrapper" style="background: #efeff3;">
   <% @blog_posts.each do |blog_post| %>
     <div class="top"><div class="title"><h1>My Blog</h1></div></div>
     <div class="content">
       <div class="card first">
-        <p class="date"><%= blog.created_at.strftime("%e %b, %Y") %></p>
+        <p class="date"><%= blog_post.created_at.strftime("%e %b, %Y") %></p>
         <p class="text">
           <%= blog_post.body %>
         <br />
