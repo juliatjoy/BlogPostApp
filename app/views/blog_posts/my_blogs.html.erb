@@ -1,14 +1,30 @@
-<div class="wrapper" style="background: #efeff3;">
-  <% @my_blogs.each do |my_blog| %>
-    <div class="top"><div class="title"><h1>My Blog</h1></div></div>
-    <div class="content">
-      <div class="card first">
-        <p class="text">
-          <%= my_blog.try(:body) %>
-        <br />
-        </p>
-        <p class="date"><%= my_blog.created_at.strftime("%e %b, %Y") %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-login">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="wrapper" style="background: #efeff3;">
+                <% @my_blogs.each do |my_blog| %>
+                  <div class="content">
+                    <div class="card first index-blog">
+                      <a href="/blog_posts/<%= my_blog.id %>">
+                        <p class="text">
+                          <div class="fr-view"><%= raw my_blog.try(:body) %></div>
+                        <br />
+                        </p>
+                        <p> By <%= my_blog.user.email %> </p>
+                        <p class="date"><%= my_blog.created_at.strftime("%e %b, %Y") %></p>
+                      </a>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>

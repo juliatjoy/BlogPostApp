@@ -1,17 +1,35 @@
-<div class="wrapper" style="background: #efeff3;">
-  <% @blog_posts.each do |blog_post| %>
-    <div class="top"><div class="title"><h1>My Blog</h1></div></div>
-    <div class="content">\
-      <div class="card first">
-        <h2>
-          <%= link_to blog_post.try(:title), blog_post %>
-        </h2>
-        <p class="date"><%= blog_post.created_at.strftime("%e %b, %Y") %></p>
-        <p class="text">
-          <div class="fr-view"><%= raw blog_post.try(:body) %></div>
-        <br />
-        </p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-login">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="wrapper" style="background: #efeff3;">
+                <h1> Blogs</h1>
+                <hr />
+                <br />
+                <% @blog_posts.each do |blog_post| %>
+                  <div class="top">
+                    <div class="content">
+                      <div class="card first index-blog">
+                        <a href="/blog_posts/<%= blog_post.id %>">
+                          <p class="text">
+                            <div class="fr-view"><%= raw blog_post.try(:body) %></div>
+                          <br />
+                          </p>
+                          <p> By <%= blog_post.user.email %> </p>
+                          <p class="date"><%= blog_post.created_at.strftime("%e %b, %Y") %></p>
+                        </a>
+                      </div>
+                    </div>
+                    <hr/>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>

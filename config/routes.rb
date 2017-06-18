@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  root 'blog_posts#home'
+  root 'blog_posts#index'
   devise_for :users
+  # resources :users do
+  #   member do
+  #     get 'following'
+  #   end
+  # end
+  get '/users/:id/following' => 'users#following', as: 'following'
   resources :blog_posts do
     resources :comments
     member do
@@ -14,5 +20,6 @@ Rails.application.routes.draw do
   get '/my_blogs' => 'blog_posts#my_blogs'
   get '/home' => 'blog_posts#home'
   get '/profile' => 'users#profile'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

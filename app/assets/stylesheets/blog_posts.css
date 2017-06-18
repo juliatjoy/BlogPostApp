@@ -264,3 +264,7 @@ ul.twPc-Arrange {
 .btn i {
   display: none !important;
 }
+
+.index-blog{
+  border: 1px solid black;
+}
