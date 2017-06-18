@@ -44,6 +44,9 @@ gem 'acts_as_votable', '~> 0.10.0'
 # text-editor
 gem 'wysiwyg-rails'
 gem 'font-awesome-rails'
+# follow
+# gem 'acts_as_follower'
+gem 'acts_as_follower', :github => 'tcocca/acts_as_follower'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

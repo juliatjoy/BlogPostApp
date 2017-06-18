@@ -1,5 +1,5 @@
 class BlogPostsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy, :like_or_unlike, :selected_user_profile]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :like_or_unlike, :selected_user_profile, :follow, :unfollow]
 
   def show
   end
@@ -68,6 +68,15 @@ class BlogPostsController < ApplicationController
     @user = @blog_post.user
   end
 
+  def follow
+    @user = @blog_post.user
+    current_user.follow(@user)
+  end
+
+  def unfollow
+    @user = @blog_post.user
+    current_user.stop_following(@user)
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog

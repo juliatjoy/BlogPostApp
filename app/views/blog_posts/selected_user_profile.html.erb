@@ -7,8 +7,13 @@
   <div>
     <div class="twPc-button">
       <!-- Twitter Button | you can get from: https://about.twitter.com/tr/resources/buttons#follow -->
-      <a href="https://twitter.com/mertskaplan" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false" data-dnt="true">Follow @mertskaplan</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      <% unless current_user.id == @user.id %>
+        <% if current_user.following?(@user) %>
+          <%= button_to 'Unfollow', unfollow_blog_post_path, method: :post, class: 'btn btn-danger' %>
+        <% else %>
+        <%= button_to 'Follow', follow_blog_post_path, method: :post, class: 'btn btn-primary' %>
+        <% end %>
+      <% end %>
       <!-- Twitter Button -->
     </div>
 
@@ -20,7 +25,6 @@
         <%= @user.try(:email) %>
       </span>
     </div>
-
       <div class="twPc-divStats">
         <ul class="twPc-Arrange">
           <li class="twPc-ArrangeSizeFit">

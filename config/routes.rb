@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     member do
       post 'like_or_unlike'
       get 'selected_user_profile'
+      post 'follow'
+      post 'unfollow'
     end
   end
   post '/signup' => 'users#signup'
