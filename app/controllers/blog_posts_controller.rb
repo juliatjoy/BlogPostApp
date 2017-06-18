@@ -1,5 +1,5 @@
 class BlogPostsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :like_or_unlike]
 
   def show
   end
@@ -56,6 +56,14 @@ class BlogPostsController < ApplicationController
     end
   end
 
+  def like_or_unlike
+    if current_user.voted_for? @blog_post
+      @blog_post.unliked_by current_user
+    else
+      @blog_post.liked_by current_user
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
@@ -66,4 +74,5 @@ class BlogPostsController < ApplicationController
     def blog_params
       params.require(:blog_post).permit(:user_id, :title, :body)
     end
+
 end

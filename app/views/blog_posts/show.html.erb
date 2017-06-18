@@ -1,19 +1,42 @@
 <%#= render :partial => post %>
-<%= render 'show_blog_post', blog_post: @blog_post %>
-<%= render 'comments/show', comments: @blog_post.comments.order(updated_at: :desc), blog_post: @blog_post %>
-<%= form_for [@blog_post, Comment.new] do |f| %>
-  <div class="field">
-    <%= f.text_area :body, placeholder: 'Leave a comment' %>
-    <button type="button" class="btn btn-primary add-new-comment">
-  </div>
-  <div class="field">
-    <%= f.hidden_field :blog_post_id %>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-login">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6">
+              <%= render 'show_blog_post', blog_post: @blog_post %>
+              <br/>
+              <% unless current_user.voted_for? @blog_post %>
+                <%= button_to 'Like', like_or_unlike_blog_post_path, method: :post, class: 'btn btn-primary' %>
+              <% else %>
+                <%= button_to 'Unlike', like_or_unlike_blog_post_path, method: :post, class: 'btn btn-danger' %>
+              <% end %>
+              <hr />
+              <%= render 'comments/show', comments: @blog_post.comments.order(updated_at: :desc), blog_post: @blog_post %>
+              <div class="create-comment">
+                <%= form_for [@blog_post, Comment.new] do |f| %>
+                  <div class="field">
+                    <%= f.text_area :body, placeholder: 'Leave a comment' %>
+                    <button type="button" class="btn btn-primary add-new-comment">
+                  </div>
+                  <div class="field">
+                    <%= f.hidden_field :blog_post_id %>
+                  </div>
 
-  <div class="field">
-    <%= f.hidden_field :user_id %>
-  </div>
+                  <div class="field">
+                    <%= f.hidden_field :user_id %>
+                  </div>
 
-  <button type="button" class="btn btn-primary"><%= f.submit "Add Comment"%></button>
-<% end %>
+                  <button type="button" class="btn btn-primary"><%= f.submit "Add Comment"%></button>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <%= link_to 'Back', blog_posts_path %>

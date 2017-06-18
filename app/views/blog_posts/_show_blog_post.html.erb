@@ -1,10 +1,10 @@
-<div class="blog-card spring-fever">
-  <div class="title-content">
-    <div class="intro">By <%= blog_post.user.email %></div>
-  </div><!-- /.title-content -->
-  <div class="card-info">
+<div class="blog-card spring-fever blog_post_body">
+  <div class="card-info body_blog">
     <%= blog_post.body %>
   </div><!-- /.card-info -->
+  <div class="title-content">
+    <div class="intro user-name">By <%= blog_post.user.email %></div>
+  </div><!-- /.title-content -->
   <!-- overlays -->
   <div class="gradient-overlay"></div>
   <div class="color-overlay"></div>

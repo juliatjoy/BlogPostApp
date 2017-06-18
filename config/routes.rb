@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :blog_posts do
     resources :comments
+    member do
+      post 'like_or_unlike'
+    end
   end
   post '/signup' => 'users#signup'
   get '/my_blogs' => 'blog_posts#my_blogs'

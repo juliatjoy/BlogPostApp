@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   # attr_accessor :login
+  acts_as_voter
 
   has_many :blog_posts, :dependent => :destroy
   has_many :comments, :dependent => :destroy
