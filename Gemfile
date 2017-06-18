@@ -41,6 +41,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '~> 3.3.6'
 # like
 gem 'acts_as_votable', '~> 0.10.0'
+# text-editor
+gem 'wysiwyg-rails'
+gem 'font-awesome-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
