@@ -8,7 +8,7 @@
         </h2>
         <p class="date"><%= blog_post.created_at.strftime("%e %b, %Y") %></p>
         <p class="text">
-          <%= blog_post.try(:body) %>
+          <div class="fr-view"><%= raw blog_post.try(:body) %></div>
         <br />
         </p>
       </div>

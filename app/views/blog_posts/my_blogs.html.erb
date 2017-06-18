@@ -1,0 +1,14 @@
+<div class="wrapper" style="background: #efeff3;">
+  <% @my_blogs.each do |my_blog| %>
+    <div class="top"><div class="title"><h1>My Blog</h1></div></div>
+    <div class="content">
+      <div class="card first">
+        <p class="text">
+          <%= my_blog.try(:body) %>
+        <br />
+        </p>
+        <p class="date"><%= my_blog.created_at.strftime("%e %b, %Y") %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

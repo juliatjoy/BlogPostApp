@@ -1,0 +1,51 @@
+<%# render 'users/user_profile' %>
+<div class="container">
+<div class="row">
+<!-- code start -->
+<div class="twPc-div">
+  <a class="twPc-bg twPc-block"></a>
+  <div>
+    <div class="twPc-button">
+      <!-- Twitter Button | you can get from: https://about.twitter.com/tr/resources/buttons#follow -->
+      <a href="https://twitter.com/mertskaplan" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false" data-dnt="true">Follow @mertskaplan</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      <!-- Twitter Button -->
+    </div>
+
+    <div class="twPc-divUser">
+      <div class="twPc-divName">
+        <%= @user.try(:user_name) %>
+      </div>
+      <span>
+        <%= @user.try(:email) %>
+      </span>
+    </div>
+
+      <div class="twPc-divStats">
+        <ul class="twPc-Arrange">
+          <li class="twPc-ArrangeSizeFit">
+            <a href=<%= "#{blog_posts_path}" %> title="blogs">
+              <span class="twPc-StatLabel twPc-block">Blogs</span>
+              <span class="twPc-StatValue"><%= @user.blog_posts.count %></span>
+            </a>
+          </li>
+          <li class="twPc-ArrangeSizeFit">
+            <a href="https://twitter.com/mertskaplan/following" title="885 Following">
+              <span class="twPc-StatLabel twPc-block">Following</span>
+              <span class="twPc-StatValue">885</span>
+            </a>
+          </li>
+          <li class="twPc-ArrangeSizeFit">
+            <a href="https://twitter.com/mertskaplan/followers" title="1.810 Followers">
+              <span class="twPc-StatLabel twPc-block">Followers</span>
+              <span class="twPc-StatValue">1.810</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<!-- code end -->
+</div>
+</div>
+

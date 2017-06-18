@@ -1,5 +1,5 @@
 class BlogPostsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy, :like_or_unlike]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :like_or_unlike, :selected_user_profile]
 
   def show
   end
@@ -62,6 +62,10 @@ class BlogPostsController < ApplicationController
     else
       @blog_post.liked_by current_user
     end
+  end
+
+  def selected_user_profile
+    @user = @blog_post.user
   end
 
   private
