@@ -12,6 +12,10 @@ class BlogPostsController < ApplicationController
     @blog_posts = BlogPost.all
   end
 
+  def my_blogs
+    @my_blogs = current_user.blog_posts
+  end
+
   def create
     @blog_post = BlogPost.new(blog_params.merge(user_id: current_user.id))
 
