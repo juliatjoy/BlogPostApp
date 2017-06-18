@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # attr_accessor :login
   acts_as_voter
 
   has_many :blog_posts, :dependent => :destroy
