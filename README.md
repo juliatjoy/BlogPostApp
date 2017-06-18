@@ -1,24 +1,30 @@
 # README
 
+# BlogPost App
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Rails version : 5.0.3
 
-* System dependencies
+* Important gems used
+  1. act_as_votable (for liking posts)
 
-* Configuration
+  2. act_as_followers (to follow users)
+
+  3. wyswig (for editor)
 
 * Database creation
+  1. Using postgres
 
-* Database initialization
+* To do
+  1. List followers and followings
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
+* What does App do?
+  1. Create blog posts
+  2. Comments for blog posts
+  3. Like Unlike posts
+  4. Folow unfollow users
 * ...

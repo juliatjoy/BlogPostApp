@@ -13,7 +13,6 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    binding.pry
     @comment = @blog_post.comments.new
   end
 
@@ -25,7 +24,6 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = @blog_post.comments.new(comment_params.merge(user_id: current_user.id))
-    binding.pry
     respond_to do |format|
       if @comment.save
         format.html { redirect_to :back, notice: 'Comment was successfully created.' }
@@ -72,7 +70,6 @@ class CommentsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      binding.pry
       params.require(:comment).permit(:user_id, :blog_post_id, :body)
     end
 end

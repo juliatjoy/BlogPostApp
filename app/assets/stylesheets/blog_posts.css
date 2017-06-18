@@ -153,14 +153,6 @@ body {
   border-color: #1CA347;
 }
 
-.body_blog{
-  float: left;
-}
-
-.user-name{
-  float: right !important;
-}
-
 .comment-show{
   float: left;
 }
@@ -267,4 +259,8 @@ ul.twPc-Arrange {
 
 .index-blog{
   border: 1px solid black;
+}
+
+.like_unlike{
+  float: right;
 }

@@ -7,12 +7,19 @@
           <div class="row">
             <div class="col-xs-6">
               <%= render 'show_blog_post', blog_post: @blog_post %>
+              <div class="like_unlike">
+                <% unless current_user.voted_for? @blog_post %>
+                  <%= button_to 'Like', like_or_unlike_blog_post_path, method: :post, class: 'btn btn-primary' %>
+                <% else %>
+                  <%= button_to 'Unlike', like_or_unlike_blog_post_path, method: :post, class: 'btn btn-danger' %>
+                <% end %>
               <br/>
-              <% unless current_user.voted_for? @blog_post %>
-                <%= button_to 'Like', like_or_unlike_blog_post_path, method: :post, class: 'btn btn-primary' %>
-              <% else %>
-                <%= button_to 'Unlike', like_or_unlike_blog_post_path, method: :post, class: 'btn btn-danger' %>
+              </div>
+              <hr />
+              <% if current_user.id == @blog_post.user_id %>
+                <%= link_to 'Edit Blog', edit_blog_post_path(@blog_post) %> |
               <% end %>
+              <br />
               <hr />
               <%= render 'comments/show', comments: @blog_post.comments.order(updated_at: :desc), blog_post: @blog_post %>
               <div class="create-comment">

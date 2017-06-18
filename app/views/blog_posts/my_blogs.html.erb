@@ -18,6 +18,7 @@
                         <p class="date"><%= my_blog.created_at.strftime("%e %b, %Y") %></p>
                       </a>
                     </div>
+                    <%= link_to 'Edit Blog', edit_blog_post_path(my_blog) %> |
                   </div>
                 <% end %>
               </div>
