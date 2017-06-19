@@ -5,39 +5,49 @@
       <div class="panel panel-login">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-12">
               <%= render 'show_blog_post', blog_post: @blog_post %>
-              <div class="like_unlike">
-                <% unless current_user.voted_for? @blog_post %>
-                  <%= button_to 'Like', like_or_unlike_blog_post_path, method: :post, class: 'btn btn-primary' %>
-                <% else %>
-                  <%= button_to 'Unlike', like_or_unlike_blog_post_path, method: :post, class: 'btn btn-danger' %>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="like_unlike">
+                    <% unless current_user.voted_for? @blog_post %>
+                      <%= button_to 'Like', like_or_unlike_blog_post_path, method: :post, class: 'btn btn-primary' %>
+                    <% else %>
+                      <%= button_to 'Unlike', like_or_unlike_blog_post_path, method: :post, class: 'btn btn-danger' %>
+                    <% end %>
+                  <br/>
+                  </div>
+                </div>
+                <% if current_user.id == @blog_post.user_id %>
+                  <div class="col-md-8">
+                    <%= link_to 'Edit Blog', edit_blog_post_path(@blog_post) %> | <%= link_to 'Delete', @blog_post, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  </div>
                 <% end %>
-              <br/>
               </div>
-              <hr />
-              <% if current_user.id == @blog_post.user_id %>
-                <%= link_to 'Edit Blog', edit_blog_post_path(@blog_post) %> |
-              <% end %>
               <br />
               <hr />
-              <%= render 'comments/show', comments: @blog_post.comments.order(updated_at: :desc), blog_post: @blog_post %>
-              <div class="create-comment">
-                <%= form_for [@blog_post, Comment.new] do |f| %>
-                  <div class="field">
-                    <%= f.text_area :body, placeholder: 'Leave a comment' %>
-                    <button type="button" class="btn btn-primary add-new-comment">
-                  </div>
-                  <div class="field">
-                    <%= f.hidden_field :blog_post_id %>
-                  </div>
+              <div class="row">
+              <div class="col-xs-12">
+                <p>Comments</p>
+                <%= render 'comments/show', comments: @blog_post.comments.order(updated_at: :desc), blog_post: @blog_post %>
+                <div class="row">
+                  <div class="create-comment col-xs-12">
+                    <%= form_for [@blog_post, Comment.new] do |f| %>
+                      <div class="field">
+                        <%= f.text_area :body, placeholder: 'Leave a comment', cols: "80", rows: "5" %>
+                      </div>
+                      <div class="field">
+                        <%= f.hidden_field :blog_post_id %>
+                      </div>
 
-                  <div class="field">
-                    <%= f.hidden_field :user_id %>
-                  </div>
+                      <div class="field">
+                        <%= f.hidden_field :user_id %>
+                      </div>
 
-                  <button type="button" class="btn btn-primary"><%= f.submit "Add Comment"%></button>
-                <% end %>
+                      <button type="button" class="btn btn-primary"><%= f.submit "Add Comment"%></button>
+                    <% end %>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

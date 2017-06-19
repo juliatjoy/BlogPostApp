@@ -3,8 +3,9 @@
     <p>
       <%= comment.body %>
     </p>
-    <hr />
     <% if current_user.id == comment.user_id %>
+      <%= link_to 'Edit', edit_blog_post_comment_path(comment.blog_post, comment) %>
     <% end %>
+    <hr />
   <% end %>
 </div>
